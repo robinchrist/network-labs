@@ -1,0 +1,305 @@
+{
+  "freeTextAnnotations": [
+    {
+      "id": "freeText_1761040389940_1",
+      "text": "10.2.0.1",
+      "position": {
+        "x": 105,
+        "y": 7
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040421386_0",
+      "text": "10.4.0.1",
+      "position": {
+        "x": 231,
+        "y": 21
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040437515_0",
+      "text": "10.3.0.1",
+      "position": {
+        "x": -21,
+        "y": 21
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040464355_0",
+      "text": "10.5.0.1",
+      "position": {
+        "x": -21,
+        "y": 91
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040475541_0",
+      "text": "10.6.0.1",
+      "position": {
+        "x": 231,
+        "y": 91
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040483834_0",
+      "text": "10.7.0.1",
+      "position": {
+        "x": -21,
+        "y": 161
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040493768_0",
+      "text": "10.8.0.1",
+      "position": {
+        "x": 231,
+        "y": 161
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040499565_0",
+      "text": "10.9.0.1",
+      "position": {
+        "x": 105,
+        "y": 217
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040517063_0",
+      "text": "10.1.0.1",
+      "position": {
+        "x": 133,
+        "y": 77
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040529380_0",
+      "text": "10.3.10.10",
+      "position": {
+        "x": -63,
+        "y": -35
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    },
+    {
+      "id": "freeText_1761040566841_0",
+      "text": "10.8.10.10",
+      "position": {
+        "x": 287,
+        "y": 231
+      },
+      "fontSize": 8,
+      "fontColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "fontFamily": "monospace"
+    }
+  ],
+  "groupStyleAnnotations": [],
+  "cloudNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "foh",
+      "icon": "router",
+      "position": {
+        "x": 105,
+        "y": 91
+      },
+      "geoCoordinates": {
+        "lat": 48.684826888402256,
+        "lng": 9.007895390625677
+      }
+    },
+    {
+      "id": "stage-center",
+      "icon": "router",
+      "position": {
+        "x": 105,
+        "y": 21
+      },
+      "geoCoordinates": {
+        "lat": 48.684826888402256,
+        "lng": 9.007895390625677
+      }
+    },
+    {
+      "id": "stage-left",
+      "icon": "router",
+      "position": {
+        "x": 21,
+        "y": 21
+      },
+      "geoCoordinates": {
+        "lat": 48.684826888402256,
+        "lng": 9.107895390625677
+      }
+    },
+    {
+      "id": "stage-right",
+      "icon": "router",
+      "position": {
+        "x": 189,
+        "y": 21
+      },
+      "geoCoordinates": {
+        "lat": 48.88482688840226,
+        "lng": 9.307895390625678
+      }
+    },
+    {
+      "id": "delay-row1-left",
+      "icon": "router",
+      "position": {
+        "x": 21,
+        "y": 91
+      },
+      "geoCoordinates": {
+        "lat": 49.084826888402254,
+        "lng": 9.507895390625677
+      }
+    },
+    {
+      "id": "delay-row1-right",
+      "icon": "router",
+      "position": {
+        "x": 189,
+        "y": 91
+      },
+      "geoCoordinates": {
+        "lat": 49.28482688840226,
+        "lng": 9.707895390625676
+      }
+    },
+    {
+      "id": "delay-row2-left",
+      "icon": "router",
+      "position": {
+        "x": 21,
+        "y": 161
+      },
+      "geoCoordinates": {
+        "lat": 49.48482688840225,
+        "lng": 9.007895390625677
+      }
+    },
+    {
+      "id": "delay-row2-right",
+      "icon": "router",
+      "position": {
+        "x": 189,
+        "y": 161
+      },
+      "geoCoordinates": {
+        "lat": 48.78482688840226,
+        "lng": 9.207895390625676
+      }
+    },
+    {
+      "id": "broadcast-truck",
+      "icon": "router",
+      "position": {
+        "x": 105,
+        "y": 189
+      },
+      "geoCoordinates": {
+        "lat": 48.98482688840225,
+        "lng": 9.407895390625677
+      }
+    },
+    {
+      "id": "stagebox1",
+      "icon": "router",
+      "position": {
+        "x": -21,
+        "y": -21
+      },
+      "geoCoordinates": {
+        "lat": 48.95149355506893,
+        "lng": 9.352339835070124
+      }
+    },
+    {
+      "id": "speaker1",
+      "icon": "router",
+      "position": {
+        "x": 245,
+        "y": 217
+      },
+      "geoCoordinates": {
+        "lat": 49.15149355506893,
+        "lng": 9.552339835070125
+      }
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+! Startup-config last modified at Tue Oct 21 09:23:46 2025 by root
+! device: broadcast-truck (cEOSLab, EOS-4.35.0F-44178984.4350F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$aaUP5LFMU0sNvZJS$cy/XyAiGuRRIrLIZpOFuhxSlPRmW4JYINz.v7qlQf6Z5G50ZPXO1ZhPck9VTDzuqjVvwL3rTyyuisrdSX8R/J0
+!
+management api http-commands
+   no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname broadcast-truck
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vrf instance MGMT
+!
+management api gnmi
+   transport grpc default
+      vrf MGMT
+!
+management api netconf
+   transport ssh default
+      vrf MGMT
+!
+interface Ethernet1
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet2
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet3
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet4
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet5
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet6
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Loopback1
+   ip address 10.9.0.1/32
+!
+interface Management0
+   vrf MGMT
+   ip address 172.20.20.10/24
+   ipv6 address 3fff:172:20:20::a/64
+!
+ip routing
+no ip routing vrf MGMT
+!
+ip route vrf MGMT 0.0.0.0/0 172.20.20.1
+!
+ipv6 route vrf MGMT ::/0 3fff:172:20:20::1
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+router ospf 1
+   router-id 10.9.0.1
+   auto-cost reference-bandwidth 800000
+   bfd default
+   network 10.9.0.1/32 area 0.0.0.0
+   max-lsa 12000
+!
+end
