@@ -1,5 +1,5 @@
 # topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
-name: ospfaudiolab01
+name: audio_ospf_lab_01
 
 topology:
   kinds:
