@@ -1,0 +1,123 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
+name: audio_ospf_ibgp_ebgp_lab01_noospfecmp
+
+topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.35.0F
+      env:
+        CLAB_MGMT_VRF: MGMT
+  nodes:
+    foh:
+      kind: arista_ceos
+      startup-config: foh-startup-config.txt
+      mgmt-ipv4: 172.20.20.2
+      mgmt-ipv6: 3fff:172:20:20::2
+    stage-center:
+      kind: arista_ceos
+      startup-config: stage-center-startup-config.txt
+      mgmt-ipv4: 172.20.20.3
+      mgmt-ipv6: 3fff:172:20:20::3
+    stage-left:
+      kind: arista_ceos
+      startup-config: stage-left-startup-config.txt
+      mgmt-ipv4: 172.20.20.4
+      mgmt-ipv6: 3fff:172:20:20::4
+    stage-right:
+      kind: arista_ceos
+      startup-config: stage-right-startup-config.txt
+      mgmt-ipv4: 172.20.20.5
+      mgmt-ipv6: 3fff:172:20:20::5
+    delay-row1-left:
+      kind: arista_ceos
+      startup-config: delay-row1-left-startup-config.txt
+      mgmt-ipv4: 172.20.20.6
+      mgmt-ipv6: 3fff:172:20:20::6
+    delay-row1-right:
+      kind: arista_ceos
+      startup-config: delay-row1-right-startup-config.txt
+      mgmt-ipv4: 172.20.20.7
+      mgmt-ipv6: 3fff:172:20:20::7
+    delay-row2-left:
+      kind: arista_ceos
+      startup-config: delay-row2-left-startup-config.txt
+      mgmt-ipv4: 172.20.20.8
+      mgmt-ipv6: 3fff:172:20:20::8
+    delay-row2-right:
+      kind: arista_ceos
+      startup-config: delay-row2-right-startup-config.txt
+      mgmt-ipv4: 172.20.20.9
+      mgmt-ipv6: 3fff:172:20:20::9
+    broadcast-truck:
+      kind: arista_ceos
+      startup-config: broadcast-truck-startup-config.txt
+      mgmt-ipv4: 172.20.20.10
+      mgmt-ipv6: 3fff:172:20:20::a
+    stagebox1:
+      kind: linux
+      image: ghcr.io/srl-labs/network-multitool:latest
+      mgmt-ipv4: 172.20.20.11
+      mgmt-ipv6: 3fff:172:20:20::b
+      exec:
+        - "ip addr add 10.3.10.10/24 dev eth1"
+        - "ip route add 10.0.0.0/8 via 10.3.10.1"
+    speaker1:
+      kind: linux
+      image: ghcr.io/srl-labs/network-multitool:latest
+      mgmt-ipv4: 172.20.20.12
+      mgmt-ipv6: 3fff:172:20:20::c
+      exec:
+        - "ip addr add 10.8.10.10/24 dev eth1"
+        - "ip route add 10.0.0.0/8 via 10.8.10.1"
+    videomixer1:
+      kind: linux
+      image: ghcr.io/srl-labs/network-multitool:latest
+      mgmt-ipv4: 172.20.20.13
+      mgmt-ipv6: 3fff:172:20:20::d
+      exec:
+        - "ip addr add 10.9.10.10/24 dev eth1"
+        - "ip route add 10.0.0.0/8 via 10.9.10.1"
+
+  links:
+    # 6x 100G FOH <-> Stage-Center
+    - endpoints: ["foh:eth1", "stage-center:eth1"]
+    - endpoints: ["foh:eth2", "stage-center:eth2"]
+    - endpoints: ["foh:eth3", "stage-center:eth3"]
+    - endpoints: ["foh:eth4", "stage-center:eth4"]
+    - endpoints: ["foh:eth5", "stage-center:eth5"]
+    - endpoints: ["foh:eth6", "stage-center:eth6"]
+    # 2x 100G FOH <-> Delay Row 1 Left
+    - endpoints: ["foh:eth7", "delay-row1-left:eth1"]
+    - endpoints: ["foh:eth8", "delay-row1-left:eth2"]
+    # 2x 100G FOH <-> Delay Row 1 Right
+    - endpoints: ["foh:eth9", "delay-row1-right:eth1"]
+    - endpoints: ["foh:eth10", "delay-row1-right:eth2"]
+    # 6x 100G FOH <-> Broadcast Truck
+    - endpoints: ["foh:eth11", "broadcast-truck:eth1"]
+    - endpoints: ["foh:eth12", "broadcast-truck:eth2"]
+    - endpoints: ["foh:eth13", "broadcast-truck:eth3"]
+    - endpoints: ["foh:eth14", "broadcast-truck:eth4"]
+    - endpoints: ["foh:eth15", "broadcast-truck:eth5"]
+    - endpoints: ["foh:eth16", "broadcast-truck:eth6"]
+    # 2x 100G Delay Row 1 Left <-> Stage Left
+    - endpoints: ["delay-row1-left:eth3", "stage-left:eth1"]
+    - endpoints: ["delay-row1-left:eth4", "stage-left:eth2"]
+    # 2x 100G Stage-Left <-> Stage-Center
+    - endpoints: ["stage-left:eth3", "stage-center:eth7"]
+    - endpoints: ["stage-left:eth4", "stage-center:eth8"]
+    # 2x 100G Delay Row 1 Right <-> Stage Right
+    - endpoints: ["delay-row1-right:eth3", "stage-right:eth1"]
+    - endpoints: ["delay-row1-right:eth4", "stage-right:eth2"]
+    # 2x 100G Stage-Right <-> Stage-Center
+    - endpoints: ["stage-right:eth3", "stage-center:eth9"]
+    - endpoints: ["stage-right:eth4", "stage-center:eth10"]
+    # 2x 100G Delay Row 2 Left <-> Delay Row 1 Left
+    - endpoints: ["delay-row2-left:eth1", "delay-row1-left:eth5"]
+    - endpoints: ["delay-row2-left:eth2", "delay-row1-left:eth6"]
+    # 2x 100G Delay Row 2 Right <-> Delay Row 1 Right
+    - endpoints: ["delay-row1-right:eth5", "delay-row2-right:eth1"]
+    - endpoints: ["delay-row1-right:eth6", "delay-row2-right:eth2"]
+    # Client downlinks
+    - endpoints: ["stagebox1:eth1", "stage-left:eth5"]
+    - endpoints: ["speaker1:eth1", "delay-row2-right:eth3"]
+    - endpoints: ["videomixer1:eth1", "broadcast-truck:eth7"]
