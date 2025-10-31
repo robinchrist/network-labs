@@ -126,6 +126,7 @@ router bgp 64496
    maximum-paths 8
    neighbor ibgp-peers peer group
    neighbor ibgp-peers remote-as 64496
+   neighbor ibgp-peers update-source Loopback1
    neighbor 10.1.0.1 peer group ibgp-peers
    neighbor 10.3.0.1 peer group ibgp-peers
    neighbor 10.4.0.1 peer group ibgp-peers
