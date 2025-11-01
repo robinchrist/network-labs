@@ -1,0 +1,122 @@
+! Startup-config last modified at Fri Oct 31 11:44:23 2025 by root
+! device: delay-row1-left (cEOSLab, EOS-4.35.0F-44178984.4350F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$v6usoIy0rcGLRFX9$soG0pfFHVJKcxLTMKvgTnU2gY6pcdxQmJYh2lll8u5Ha2rmKCrRLVEVAD/gE6jMg2e.2y9Rl4KTCNuFzggCW5.
+!
+management api http-commands
+   no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname delay-row1-left
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vrf instance MGMT
+!
+management api gnmi
+   transport grpc default
+      vrf MGMT
+!
+management api netconf
+   transport ssh default
+      vrf MGMT
+!
+interface Ethernet1
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet2
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet3
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet4
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet5
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet6
+   speed 100g-4
+   no switchport
+   ip address unnumbered Loopback1
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Loopback1
+   ip address 10.5.0.1/32
+!
+interface Management0
+   vrf MGMT
+   ip address 172.20.20.6/24
+   ipv6 address 3fff:172:20:20::6/64
+!
+ip routing
+no ip routing vrf MGMT
+!
+ip route vrf MGMT 0.0.0.0/0 172.20.20.1
+!
+ipv6 route vrf MGMT ::/0 3fff:172:20:20::1
+!
+router bgp 64496
+   router-id 10.5.0.1
+   no bgp default ipv4-unicast
+   maximum-paths 8
+   neighbor rr peer group
+   neighbor rr remote-as 64496
+   neighbor rr update-source Loopback1
+   neighbor 10.10.0.1 peer group rr
+   !
+   address-family ipv4
+      neighbor rr activate
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+router ospf 1
+   router-id 10.5.0.1
+   auto-cost reference-bandwidth 800000
+   bfd default
+   network 10.5.0.1/32 area 0.0.0.0
+   max-lsa 12000
+   maximum-paths 1
+!
+end
